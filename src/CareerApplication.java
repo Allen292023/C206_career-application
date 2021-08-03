@@ -193,9 +193,7 @@ public class CareerApplication {
 	}
 	//Add the methods for the option in the sub menu below
 	
-	public static void creative() {
-		
-	}
+	
 	
 	
 	
