@@ -74,11 +74,11 @@ public class CareerApplication {
 					sub_option = Helper.readInt("Enter Choice > ");
 					
 					if (sub_option == 1) {
-						
+						addCareer();
 					}else if (sub_option == 2) {
-						
+						viewCareer();				
 					}else if (sub_option == 3) {
-						
+						deleteCareer();
 					}
 				}
 			} else if (option == 4) {
@@ -220,6 +220,56 @@ public class CareerApplication {
 		Helper.line(40, ".");
 		System.out.println("Add Careers");
 		Helper.line(40, ".");
+		
+		int careerID = Helper.readInt("Enter the Career ID> ");
+		String careerName = Helper.readString("Enter the Career Name> ");
+		
+		Career_Information careerInfo = new Career_Information(careerID, careerName);
+		careerList.add(careerInfo);
+		System.out.println("Career Added!");
+	}
+	
+	public void viewCareer() {
+		Helper.line(40, ".");
+		System.out.println("All careers");
+		Helper.line(40, ".");
+		
+		System.out.println(String.format("%-20s %-20s ", "CAREER ID", "CAREER NAME"));
+		for(int i = 0; i < careerList.size(); i++) {
+			Career_Information career = careerList.get(i);
+			System.out.println(String.format("%-20s %-20s ", career.getCareerID(), career.getCareerName()));
+		}
+		
+	}
+	
+	public void deleteCareer() {
+		Helper.line(40, ".");
+		System.out.println("Delete career");
+		Helper.line(40, ".");
+		
+		int deleteCareer = Helper.readInt("Enter CareerID of career to be removed> ");
+		for(int i = 0; i < careerList.size(); i++) {
+			Career_Information career = careerList.get(i);
+			
+			if(career.getCareerID() == deleteCareer) {
+				System.out.println(String.format("%-20s %-20s ", "CAREER ID", "CAREER NAME"));
+				System.out.println(String.format("%-20s %-20s ", career.getCareerID(), career.getCareerName()));
+				
+				char confirmation = Helper.readChar("Do you want to remove this career(y/n)> ");
+				if(confirmation == 'y') {
+					careerList.remove(i);
+					System.out.println("Career has been removed!");
+				}
+				
+				else {
+					System.out.println("Career is not removed!");
+				}
+			}
+			
+			else {
+				System.out.println("Career not found!");
+			}
+		}
 	}
 	
 	
