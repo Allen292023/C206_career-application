@@ -11,5 +11,28 @@
  *
  */
 public class Career_Information {
+	
+	public int careerID;
+	public String careerName;
+	
+	public Career_Information(int careerID, String careerName) {
+		this.careerID = careerID;
+		this.careerName = careerName;
+	}
 
+	public int getCareerID() {
+		return careerID;
+	}
+
+	public void setCareerID(int careerID) {
+		this.careerID = careerID;
+	}
+
+	public String getCareerName() {
+		return careerName;
+	}
+
+	public void setCareerName(String careerName) {
+		this.careerName = careerName;
+	}
 }
