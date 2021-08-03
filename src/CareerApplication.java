@@ -131,26 +131,65 @@ public class CareerApplication {
 		Helper.line(40, ".");
 		
 		int userID= Helper.readInt("Enter the User ID> ");
-		String name=Helper.readString("Enter the user name> ");
-		String role=Helper.readString("Enter the role > ");
-		String email=Helper.readString("Enter email > ");
-		String pass=Helper.readString("Enter password > ");
 		
-		User_Account newUser= new User_Account(userID,name,role,email,pass);
-		userList.add(newUser);
 		
-	}
-	
+		if(userList.size() == 0) {
+			String name=Helper.readString("Enter the user name> ");
+			String role=Helper.readString("Enter the role > ");
+			String email=Helper.readString("Enter email > ");
+			String pass=Helper.readString("Enter password > ");
+			User_Account newUser= new User_Account(userID,name,role,email,pass);
+			userList.add(newUser);
+			System.out.println("User Added!");
+		}
+		
+		else {
+					
+					int option = 1;
+					
+					for(int i = 0; i < userList.size(); i++) {
+						int listID = userList.get(i).getUser_id();
+						
+						if(userID != listID) {			
+							option = 0;				
+						}
+						
+						else {
+							option = 1;
+							break;
+						}			
+					}
+					if(option == 1) {
+						System.out.println("User not added");
+					}
+					else {
+						String name=Helper.readString("Enter the user name> ");
+						String role=Helper.readString("Enter the role > ");
+						String email=Helper.readString("Enter email > ");
+						String pass=Helper.readString("Enter password > ");
+						User_Account newUser= new User_Account(userID,name,role,email,pass);
+						userList.add(newUser);
+						System.out.println("User Added!");
+					}
+				}
+	}	
 	public  void viewUser() {
 		Helper.line(40, ".");
 		System.out.println("All users");
 		Helper.line(40, ".");
 		
-		System.out.println(String.format("%-10s %-20s %-20s %-20s %-20s", "USER ID","NAME","ROLE","EMAIL","PASSWORD"));
-		for (int i=0; i<userList.size();i++) {
-			User_Account ez= userList.get(i);
-			System.out.println(String.format("%-10d %-20s %-20s %-20s %-20s",ez.getUser_id(),ez.getName(),ez.getRole(),ez.getEmail(),ez.getPassword()));
+		if(userList.size() == 0) {
+			System.out.println("No Entries listed");
 		}
+		
+		else {
+			System.out.println(String.format("%-10s %-20s %-20s %-20s %-20s", "USER ID","NAME","ROLE","EMAIL","PASSWORD"));
+			for (int i=0; i<userList.size();i++) {
+				User_Account ez= userList.get(i);
+				System.out.println(String.format("%-10d %-20s %-20s %-20s %-20s",ez.getUser_id(),ez.getName(),ez.getRole(),ez.getEmail(),ez.getPassword()));
+			}
+		}
+		
 		
 		
 	}
@@ -222,11 +261,44 @@ public class CareerApplication {
 		Helper.line(40, ".");
 		
 		int careerID = Helper.readInt("Enter the Career ID> ");
-		String careerName = Helper.readString("Enter the Career Name> ");
 		
-		Career_Information careerInfo = new Career_Information(careerID, careerName);
-		careerList.add(careerInfo);
-		System.out.println("Career Added!");
+		
+		
+		if(careerList.size() == 0) {
+			String careerName = Helper.readString("Enter the Name> ");
+			Career_Information careerInfo = new Career_Information(careerID, careerName);
+			careerList.add(careerInfo);
+			System.out.println("Career Added!");
+		}
+		
+		else {
+			
+			int option = 1;
+			
+			for(int i = 0; i < careerList.size(); i++) {
+				int listID = careerList.get(i).getCareerID();
+				
+				if(careerID != listID) {			
+					option = 0;				
+				}
+				
+				else {
+					option = 1;
+					break;
+				}			
+			}
+			if(option == 1) {
+				System.out.println("User not added");
+			}
+			else {
+				String careerName = Helper.readString("Enter the Career Name> ");
+				Career_Information careerInfo = new Career_Information(careerID, careerName);
+				careerList.add(careerInfo);
+				System.out.println("Career Added!");
+			}
+		}
+		
+		
 	}
 	
 	public void viewCareer() {
@@ -234,11 +306,18 @@ public class CareerApplication {
 		System.out.println("All careers");
 		Helper.line(40, ".");
 		
-		System.out.println(String.format("%-20s %-20s ", "CAREER ID", "CAREER NAME"));
-		for(int i = 0; i < careerList.size(); i++) {
-			Career_Information career = careerList.get(i);
-			System.out.println(String.format("%-20s %-20s ", career.getCareerID(), career.getCareerName()));
+		if(careerList.size() == 0) {
+			System.out.println("No Entries listed");
 		}
+		
+		else {
+			System.out.println(String.format("%-20s %-20s ", "CAREER ID", "CAREER NAME"));
+			for(int i = 0; i < careerList.size(); i++) {
+				Career_Information career = careerList.get(i);
+				System.out.println(String.format("%-20s %-20s ", career.getCareerID(), career.getCareerName()));
+			}
+		}
+		
 		
 	}
 	
