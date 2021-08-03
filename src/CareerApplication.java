@@ -230,10 +230,18 @@ public class CareerApplication {
 		System.out.println("3) Delete Subject");
 		System.out.println("4) Exit");
 	}
-
 	
-
+	public void Addsubject() {
 		
+	}
+	
+	public void Viewsubject() {
 		
+	}
+	
+	public void Deletesubject() {
+		
+	}	
 
 }
+ 
