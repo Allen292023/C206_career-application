@@ -19,6 +19,8 @@ public class CareerApplication {
 	 * @param args
 	 */
 	ArrayList<User_Account> userList = new ArrayList<User_Account>();
+	ArrayList<Career_Information> careerList = new ArrayList<Career_Information>();
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub	
 		CareerApplication app = new CareerApplication();
@@ -214,7 +216,11 @@ public class CareerApplication {
 		System.out.println("4) Exit");
 	}
 	//Add the methods for the options in the sub menu below
-	
+	public void addCareer(){
+		Helper.line(40, ".");
+		System.out.println("Add Careers");
+		Helper.line(40, ".");
+	}
 	
 	
 	
