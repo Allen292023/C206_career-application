@@ -12,8 +12,8 @@
  */
 public class Career_Information {
 	
-	public int careerID;
-	public String careerName;
+	private int careerID;
+	private String careerName;
 	
 	public Career_Information(int careerID, String careerName) {
 		this.careerID = careerID;
