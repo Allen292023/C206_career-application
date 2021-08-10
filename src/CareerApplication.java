@@ -71,7 +71,7 @@ public class CareerApplication {
 				int sub_option = -1;
 				while (sub_option != 4) {
 					SubMenuCareer();
-					sub_option = Helper.readInt("Enter Choice > ");
+					sub_option = Helper.readInt("Enter Choice > ");//test
 
 					if (sub_option == 1) {
 						addCareer();
