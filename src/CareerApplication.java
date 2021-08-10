@@ -74,14 +74,9 @@ public class CareerApplication {
 					sub_option = Helper.readInt("Enter Choice > ");
 
 					if (sub_option == 1) {
-
-					} else if (sub_option == 2) {
-
-					} else if (sub_option == 3) {
-
-
 						addCareer();
-					}else if (sub_option == 2) {
+					} 
+					else if (sub_option == 2) {
 						viewCareer();				
 					}else if (sub_option == 3) {
 						deleteCareer();
