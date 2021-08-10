@@ -18,8 +18,7 @@ public class CareerApplication {
 	 */
 	ArrayList<User_Account> userList = new ArrayList<User_Account>();
 	ArrayList<Subject> subjectList = new ArrayList<Subject>();
-
-
+	ArrayList<Academic_cluster> clusterList = new ArrayList<Academic_cluster>();
 	ArrayList<Career_Information> careerList = new ArrayList<Career_Information>();
 	
 	public static void main(String[] args) {
@@ -237,6 +236,97 @@ public class CareerApplication {
 		System.out.println("4) Exit");
 	}
 	// Add the methods for the option in the sub menu below
+	public void addCluster(){
+		Helper.line(40, ".");
+		System.out.println("Add users");
+		Helper.line(40, ".");
+			
+		int clusterID= Helper.readInt("Enter the Cluster ID> ");
+			
+			
+		if(userList.size() == 0) {
+			String clusterName=Helper.readString("Enter the Cluster name> ");
+			Academic_cluster newCluster= new Academic_cluster(clusterID,clusterName);
+			clusterList.add(newCluster);
+			System.out.println("Cluster Added!");
+		}
+			
+		else {
+					
+					int option = 1;
+						
+					for(int i = 0; i < userList.size(); i++) {
+						int listID = userList.get(i).getUser_id();
+						
+						if(clusterID != listID) {			
+							option = 0;				
+						}
+							
+						else {
+							option = 1;
+							break;
+						}			
+					}
+					if(option == 1) {
+						System.out.println("Cluster not added");
+					}
+					else {
+						String clusterName=Helper.readString("Enter the Cluster name> ");
+						Academic_cluster newCluster= new Academic_cluster(clusterID,clusterName);
+						clusterList.add(newCluster);
+						System.out.println("Cluster Added!");
+				}
+			}
+		}
+	
+	public void viewCluster() {
+		Helper.line(40, ".");
+		System.out.println("All clusters");
+		Helper.line(40, ".");
+
+		if (userList.size() == 0) {
+			System.out.println("No Entries listed");
+		}
+
+		else {
+			System.out.println(
+					String.format("%-10s %-20s", "Cluster ID", "Cluster Name"));
+			for (int i = 0; i < clusterList.size(); i++) {
+				Academic_cluster ez = clusterList.get(i);
+				System.out.println(String.format("%-10d %-20s",ez.getclusterID(),ez.getclusterName()));
+			}
+		}
+	}
+
+	public void delCluster() {
+		Helper.line(40, ".");
+		System.out.println("Delete cluster");
+		Helper.line(40, ".");
+
+		int delCluster = Helper.readInt("Enter ClusterID of cluster to be removed> ");
+		for (int i = 0; i < clusterList.size(); i++) {
+			Academic_cluster career = clusterList.get(i);
+
+			if (career.getclusterID() == delCluster) {
+				System.out.println(String.format("%-20s %-20s ", "Cluster ID", "Cluster NAME"));
+				System.out.println(String.format("%-20d %-20s ", career.getclusterID(), career.getclusterName()));
+
+				char confirmation = Helper.readChar("Do you want to remove this cluster(y/n)> ");
+				if (confirmation == 'y') {
+					clusterList.remove(i);
+					System.out.println("Cluster has been removed!");
+				}
+
+				else {
+					System.out.println("Cluster is not removed!");
+				}
+			}
+
+			else {
+				System.out.println("Cluster not found!");
+			}
+		}
+	}
 
 	// ----------------------------------
 	// Sub menu for the management for Career Information
