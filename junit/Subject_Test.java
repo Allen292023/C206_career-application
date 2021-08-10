@@ -33,7 +33,8 @@ public class Subject_Test {
 	@Test
 	public void testAddSubjects() {
 		assertNotNull("Test that list is not null", subjectList);
-		
+		subjectList.add(subject1);
+		subjectList.add(subject2);
 		
 	}
 	
