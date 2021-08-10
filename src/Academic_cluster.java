@@ -34,6 +34,6 @@ public class Academic_cluster {
 	public void setclusterName(String clusterName) {
 		this.clusterName = clusterName;
 	}
-	s
+	
 	
 }
