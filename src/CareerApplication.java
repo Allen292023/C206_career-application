@@ -263,7 +263,7 @@ public class CareerApplication {
 		int careerID = Helper.readInt("Enter the Career ID> ");
 		
 		
-		
+		//check
 		if(careerList.size() == 0) {
 			String careerName = Helper.readString("Enter the Name> ");
 			Career_Information careerInfo = new Career_Information(careerID, careerName);
