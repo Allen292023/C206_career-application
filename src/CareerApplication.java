@@ -75,8 +75,7 @@ public class CareerApplication {
 
 					if (sub_option == 1) {
 						addCareer();
-					} 
-					else if (sub_option == 2) {
+					}else if (sub_option == 2) {
 						viewCareer();				
 					}else if (sub_option == 3) {
 						deleteCareer();
