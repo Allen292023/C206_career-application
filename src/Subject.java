@@ -7,9 +7,24 @@
  */
 
 /**
- * @author Darren
+ * @author Yi Liang
  *
  */
 public class Subject {
-
+	private int SubjectID;
+	private String Description;
+	
+	public Subject(int id, String desc) {
+		this.SubjectID = id;
+		this.Description = desc;
+	}
+	
+	public int getSubjectID() {
+		return SubjectID;
+	}
+	
+	public String getDesc() {
+		return Description;
+	}
+	
 }

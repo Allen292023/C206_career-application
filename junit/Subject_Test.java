@@ -18,7 +18,10 @@ import org.junit.Test;
  */
 
 public class Subject_Test {
-	ArrayList<String> list = new ArrayList<String>();
+	ArrayList<Subject> subjectList = new ArrayList<Subject>();
+	Subject subject1 = new Subject(1, "English");
+	Subject subject2 = new Subject(2, "Maths");
+	
 	@Before
 	public void setUp() throws Exception {
 	}
@@ -28,9 +31,12 @@ public class Subject_Test {
 	}
 
 	@Test
-	public void test() {
-		assertEquals(0,list.size());
-		fail("Not yet implemented");
+	public void testAddSubjects() {
+		assertNotNull("Test that list is not null", subjectList);
+		
+		subjectList.add(subject1);
+		subjectList.add(subject2);
+		
 	}
-
+	
 }

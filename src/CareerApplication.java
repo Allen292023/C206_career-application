@@ -19,6 +19,9 @@ public class CareerApplication {
 	ArrayList<User_Account> userList = new ArrayList<User_Account>();
 	ArrayList<Subject> subjectList = new ArrayList<Subject>();
 
+
+	ArrayList<Career_Information> careerList = new ArrayList<Career_Information>();
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		CareerApplication app = new CareerApplication();
@@ -77,6 +80,12 @@ public class CareerApplication {
 
 					} else if (sub_option == 3) {
 
+
+						addCareer();
+					}else if (sub_option == 2) {
+						viewCareer();				
+					}else if (sub_option == 3) {
+						deleteCareer();
 					}
 				}
 			} else if (option == 4) {
@@ -130,6 +139,7 @@ public class CareerApplication {
 		System.out.println("Add users");
 		Helper.line(40, ".");
 
+
 		int userID = Helper.readInt("Enter the User ID> ");
 		String name = Helper.readString("Enter the user name> ");
 		String role = Helper.readString("Enter the role > ");
@@ -142,18 +152,50 @@ public class CareerApplication {
 	}
 
 	public void viewUser() {
-		Helper.line(40, ".");
-		System.out.println("All users");
-		Helper.line(40, ".");
 
-		System.out.println(
-				String.format("%-10s %-20s %-20s %-20s %-20s", "USER ID", "NAME", "ROLE", "EMAIL", "PASSWORD"));
-		for (int i = 0; i < userList.size(); i++) {
-			User_Account ez = userList.get(i);
-			System.out.println(String.format("%-10d %-20s %-20s %-20s %-20s", ez.getUser_id(), ez.getName(),
-					ez.getRole(), ez.getEmail(), ez.getPassword()));
+		
+		int userID= Helper.readInt("Enter the User ID> ");
+		
+		
+		if(userList.size() == 0) {
+			String name=Helper.readString("Enter the user name> ");
+			String role=Helper.readString("Enter the role > ");
+			String email=Helper.readString("Enter email > ");
+			String pass=Helper.readString("Enter password > ");
+			User_Account newUser= new User_Account(userID,name,role,email,pass);
+			userList.add(newUser);
+			System.out.println("User Added!");
 		}
-
+		
+		else {
+					
+					int option = 1;
+					
+					for(int i = 0; i < userList.size(); i++) {
+						int listID = userList.get(i).getUser_id();
+						
+						if(userID != listID) {			
+							option = 0;				
+						}
+						
+						else {
+							option = 1;
+							break;
+						}			
+					}
+					if(option == 1) {
+						System.out.println("User not added");
+					}
+					else {
+						String name=Helper.readString("Enter the user name> ");
+						String role=Helper.readString("Enter the role > ");
+						String email=Helper.readString("Enter email > ");
+						String pass=Helper.readString("Enter password > ");
+						User_Account newUser= new User_Account(userID,name,role,email,pass);
+						userList.add(newUser);
+						System.out.println("User Added!");
+					}
+				}
 	}
 
 	public void deleteUser() {
@@ -211,6 +253,110 @@ public class CareerApplication {
 
 	// -----------------------------------
 	// Sub menu for the management of Subjects
+
+	//Add the methods for the options in the sub menu below
+	public void addCareer(){
+		Helper.line(40, ".");
+		System.out.println("Add Careers");
+		Helper.line(40, ".");
+		
+		int careerID = Helper.readInt("Enter the Career ID> ");
+		
+		
+		
+		if(careerList.size() == 0) {
+			String careerName = Helper.readString("Enter the Name> ");
+			Career_Information careerInfo = new Career_Information(careerID, careerName);
+			careerList.add(careerInfo);
+			System.out.println("Career Added!");
+		}
+		
+		else {
+			
+			int option = 1;
+			
+			for(int i = 0; i < careerList.size(); i++) {
+				int listID = careerList.get(i).getCareerID();
+				
+				if(careerID != listID) {			
+					option = 0;				
+				}
+				
+				else {
+					option = 1;
+					break;
+				}			
+			}
+			if(option == 1) {
+				System.out.println("User not added");
+			}
+			else {
+				String careerName = Helper.readString("Enter the Career Name> ");
+				Career_Information careerInfo = new Career_Information(careerID, careerName);
+				careerList.add(careerInfo);
+				System.out.println("Career Added!");
+			}
+		}
+		
+		
+	}
+	
+	public void viewCareer() {
+		Helper.line(40, ".");
+		System.out.println("All careers");
+		Helper.line(40, ".");
+		
+		if(careerList.size() == 0) {
+			System.out.println("No Entries listed");
+		}
+		
+		else {
+			System.out.println(String.format("%-20s %-20s ", "CAREER ID", "CAREER NAME"));
+			for(int i = 0; i < careerList.size(); i++) {
+				Career_Information career = careerList.get(i);
+				System.out.println(String.format("%-20s %-20s ", career.getCareerID(), career.getCareerName()));
+			}
+		}
+		
+		
+	}
+	
+	public void deleteCareer() {
+		Helper.line(40, ".");
+		System.out.println("Delete career");
+		Helper.line(40, ".");
+		
+		int deleteCareer = Helper.readInt("Enter CareerID of career to be removed> ");
+		for(int i = 0; i < careerList.size(); i++) {
+			Career_Information career = careerList.get(i);
+			
+			if(career.getCareerID() == deleteCareer) {
+				System.out.println(String.format("%-20s %-20s ", "CAREER ID", "CAREER NAME"));
+				System.out.println(String.format("%-20s %-20s ", career.getCareerID(), career.getCareerName()));
+				
+				char confirmation = Helper.readChar("Do you want to remove this career(y/n)> ");
+				if(confirmation == 'y') {
+					careerList.remove(i);
+					System.out.println("Career has been removed!");
+				}
+				
+				else {
+					System.out.println("Career is not removed!");
+				}
+			}
+			
+			else {
+				System.out.println("Career not found!");
+			}
+		}
+	}
+	
+	
+	
+	
+	//-----------------------------------
+	//Sub menu for the management of Subjects
+
 	public static void SubMenuSubject() {
 		Helper.line(30, "-");
 		System.out.println("Manage Subject");
