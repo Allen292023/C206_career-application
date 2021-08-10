@@ -34,8 +34,6 @@ public class Subject_Test {
 	public void testAddSubjects() {
 		assertNotNull("Test that list is not null", subjectList);
 		
-		subjectList.add(subject1);
-		subjectList.add(subject2);
 		
 	}
 	
